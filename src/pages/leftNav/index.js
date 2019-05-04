@@ -1,6 +1,7 @@
 import React from 'react'
 import './leftNav.scss'
 import { Layout, Icon, Menu } from 'antd'
+import { Link } from 'react-router-dom'
 
 const { Sider } = Layout
 const { SubMenu } = Menu
@@ -22,10 +23,14 @@ class LeftNav extends React.Component {
         >
           <SubMenu key="sub-article" title={<span><Icon type="user" />{!this.props.collapsed ? '文章管理' : ''}</span>}>
             <Menu.Item key="article-list">
-              <span>文章列表</span>
+              <Link to="/">
+                <span>文章列表</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="article-item">
-              <span>添加文章</span>
+              <Link to="/addArticle">
+                <span>添加文章</span>
+              </Link>
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub-tag" title={<span><Icon type="user" />{!this.props.collapsed ? '标签管理' : ''}</span>}>

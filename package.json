@@ -6,6 +6,7 @@
     "antd": "^3.16.6",
     "babel-plugin-import": "^1.11.0",
     "customize-cra": "^0.2.12",
+    "for-editor": "0.0.13",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-app-rewired": "^2.1.3",

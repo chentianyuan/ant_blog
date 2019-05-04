@@ -2,14 +2,13 @@ import React from 'react'
 import { Layout, Icon } from 'antd'
 import { Switch, Route } from 'react-router-dom'
 import articleList from './subpages/articleList'
+import addArticle from './subpages/addArticle'
+import edit from './subpages/edit'
 import './rightContent.scss'
 
 let { Header, Footer } = Layout
 
 class RightContent extends React.Component {
-  // constructor (props) {
-  //   super(props)
-  // }
 
   toggle = () => {
     this.props.onCollapsedHandler()
@@ -28,7 +27,8 @@ class RightContent extends React.Component {
         {/* 路由区 */}
         <Switch>
           <Route exact path="/" component={articleList} />
-          <Route exact path="/addArticle" component={articleList}/>
+          <Route exact path="/addArticle" component={addArticle}/>
+          <Route exact path="/edit/:postId" component={edit}></Route>
         </Switch>
         {/* 路由区 */}
         <Footer style={{ textAlign: 'center' }}>

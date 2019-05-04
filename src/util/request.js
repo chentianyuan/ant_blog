@@ -4,7 +4,9 @@ export const PATHS = {
     getOnearticle: '/post/onepost',
     getArticleByPagination: '/post/pagination',
     getArticleByPaginationWithTag: '/post/pagination/withtag',
-    deleteArticle: '/post/deleteArticle'
+    deleteArticle: '/post/deleteArticle',
+    upadteArticle: '/post/updateArticle',
+    insertPost: '/post/insert'
   },
   tag: {
     getAlltags: '/tag/list'
@@ -31,11 +33,10 @@ let fetchFn = function (path, params = {}, headerParams = {
     method: this.method,
     mode: 'cors'
   }, this.method === 'POST' ? {body: JSON.stringify(params)} : {})
-  console.log(params, '---------')
   return fetch(path, params)
   .then(res => res.json())
   .then(res => {
-    console.log(res.data, !res.hasError)
+    console.log(res, !res.hasError)
     let data = res.data
     if (data && !res.hasError) {
       return data
