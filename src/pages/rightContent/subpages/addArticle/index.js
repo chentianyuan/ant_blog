@@ -3,7 +3,6 @@ import Breadcrumb from '../../../../pages/components/breadcrumb'
 import { Layout, Form, Input, Checkbox, Col, Button, message, Modal } from 'antd'
 import { request, PATHS } from '../../../../util/request'
 import Editor from 'for-editor'
-import * as Actions from '../../../../store/action'
 import { connect } from 'react-redux'
 
 const { Content } = Layout
@@ -73,7 +72,7 @@ class addArticle extends React.Component {
             if (res && !res.hasError) {
               resolve()
               message.success('新增成功')
-              // self.props.updateStateAction('/')
+              self.props.updateStateAction('/addArticle')
               self.props.history.push('/')
             } else {
               reject()
@@ -131,4 +130,10 @@ const mapStateToProps = state => ({
   path: state.path
 })
 
-export default connect(mapStateToProps, Actions)(addArticle)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateStateAction: payload => dispatch({ type: 'update', payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(addArticle)

@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
-import Reducer from './reducer'
+import rootReducer from './reducer'
 
-const store = createStore(Reducer)
+const store = createStore(rootReducer)
 
 export default store

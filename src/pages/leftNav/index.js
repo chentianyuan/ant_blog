@@ -3,7 +3,6 @@ import './leftNav.scss'
 import { Layout, Icon, Menu } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as Action from '../../store/action'
 
 const { Sider } = Layout
 const { SubMenu } = Menu
@@ -15,17 +14,24 @@ map.set('/addArticle', 'article-add')
 map.set('/tagList', 'tag-list')
 map.set('/addTag', 'tag-add')
 map.set('/board', 'board')
+map.set('/edit', 'article-list')
 
 class LeftNav extends React.Component {
-  componentDidMount () {
+  componentWillMount () {
     // 路由监听
     this.props.history.listen(route => {
+      console.log(this.props.dispatch, route, '---------')
       // redux状态管理
       this.props.updateStateAction(route.pathname)
     })
   }
   
   render () {
+    console.log(this.props.path, this.store, '-----99--------')
+    // let key = this.props.path
+    let key = this.props.location.pathname
+    key = key.startsWith('/edit') ? '/edit' : key
+
     return (
       <Sider
         className="left-nav"
@@ -37,8 +43,8 @@ class LeftNav extends React.Component {
           theme="dark"
           mode="inline"
           defaultOpenKeys={['sub-article']}
-          defaultSelectedKeys={[map.get(this.props.path)]}
-          selectedKeys={[map.get(this.props.path)]}
+          defaultSelectedKeys={[map.get(key)]}
+          selectedKeys={[map.get(key || '/')]}
         >
           <SubMenu key="sub-article" title={<span><Icon type="user" />{!this.props.collapsed ? '文章管理' : ''}</span>}>
             <Menu.Item key="article-list">
@@ -71,8 +77,16 @@ class LeftNav extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  path: state.path
-})
+const mapStateToProps = state => function () {
+  return ({
+    path: state.common.path
+  })
+}
 
-export default withRouter(connect(mapStateToProps, Action)(LeftNav))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateStateAction: payload => dispatch({ type: 'update', payload })
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LeftNav))
