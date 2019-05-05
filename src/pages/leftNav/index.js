@@ -27,10 +27,15 @@ class LeftNav extends React.Component {
   }
   
   render () {
-    console.log(this.props.path, this.store, '-----99--------')
     // let key = this.props.path
     let key = this.props.location.pathname
     key = key.startsWith('/edit') ? '/edit' : key
+    let optKey = 'sub-article'
+    if (key.toLocaleLowerCase().includes('tag')) {
+      optKey = 'sub-tag'
+    } else if (key.toLocaleLowerCase().includes('borad')) {
+      optKey = 'sub-borad'
+    }
 
     return (
       <Sider
@@ -42,7 +47,7 @@ class LeftNav extends React.Component {
         <Menu
           theme="dark"
           mode="inline"
-          defaultOpenKeys={['sub-article']}
+          defaultOpenKeys={[optKey]}
           defaultSelectedKeys={[map.get(key)]}
           selectedKeys={[map.get(key || '/')]}
         >
