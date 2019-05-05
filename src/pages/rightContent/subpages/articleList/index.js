@@ -63,7 +63,7 @@ class articleList extends React.Component {
   componentDidMount () {
     this.getArticles().then(res => {
       this.setState({
-        articleData: res.postList.map((item, key) => Object.assign(item, {key}))
+        articleData: res ? res.postList.map((item, key) => Object.assign(item, { key })) : []
       })
     })
   }

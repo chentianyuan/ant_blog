@@ -1,12 +1,30 @@
 import React from 'react'
 import './leftNav.scss'
 import { Layout, Icon, Menu } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import * as Action from '../../store/action'
 
 const { Sider } = Layout
 const { SubMenu } = Menu
 
+// 存储侧边栏信息
+let map = new Map()
+map.set('/', 'article-list')
+map.set('/addArticle', 'article-add')
+map.set('/tagList', 'tag-list')
+map.set('/addTag', 'tag-add')
+map.set('/board', 'board')
+
 class LeftNav extends React.Component {
+  componentDidMount () {
+    // 路由监听
+    this.props.history.listen(route => {
+      // redux状态管理
+      this.props.updateStateAction(route.pathname)
+    })
+  }
+  
   render () {
     return (
       <Sider
@@ -18,8 +36,9 @@ class LeftNav extends React.Component {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['article-list']}
           defaultOpenKeys={['sub-article']}
+          defaultSelectedKeys={[map.get(this.props.path)]}
+          selectedKeys={[map.get(this.props.path)]}
         >
           <SubMenu key="sub-article" title={<span><Icon type="user" />{!this.props.collapsed ? '文章管理' : ''}</span>}>
             <Menu.Item key="article-list">
@@ -27,7 +46,7 @@ class LeftNav extends React.Component {
                 <span>文章列表</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="article-item">
+            <Menu.Item key="article-add">
               <Link to="/addArticle">
                 <span>添加文章</span>
               </Link>
@@ -52,4 +71,8 @@ class LeftNav extends React.Component {
   }
 }
 
-export default LeftNav
+const mapStateToProps = state => ({
+  path: state.path
+})
+
+export default withRouter(connect(mapStateToProps, Action)(LeftNav))

@@ -28,7 +28,7 @@ let fetchFn = function (path, params = {}, headerParams = {
     'Content-Type': 'application/json'
   })
  }) {
-  path = 'http://localhost:8088/api' + path
+  path = 'http://localhost:8089/api' + path
   params = Object.assign(headerParams, {
     method: this.method,
     mode: 'cors'
