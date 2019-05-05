@@ -38,7 +38,7 @@ class articleList extends React.Component {
       title: '编辑',
       render: (text, record) => (
         <span>
-          <a href="www.baidu.com">查看</a>
+          <a href={`http://chentianyuan.xyz/article/${record.id}`}>查看</a>
           <Divider type="vertical" />
           <Link to={`/edit/${record.id}`}>修改</Link>
           <Divider type="vertical" />

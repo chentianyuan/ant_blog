@@ -60,15 +60,21 @@ class LeftNav extends React.Component {
           </SubMenu>
           <SubMenu key="sub-tag" title={<span><Icon type="user" />{!this.props.collapsed ? '标签管理' : ''}</span>}>
             <Menu.Item key="tag-list">
-              <span>全部标签</span>
+              <Link to="/tagList">
+                <span>全部标签</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="tag-add">
-              <span>新增标签</span>
+              <Link to="/addTag">
+                <span>新增标签</span>
+              </Link>
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub-borad" title={<span><Icon type="user" />{!this.props.collapsed ? '留言墙管理' : ''}</span>}>
             <Menu.Item key="borad">
-              <span>留言墙</span>
+              <Link to="/borad">
+                <span>留言墙</span>
+              </Link>
             </Menu.Item>
           </SubMenu>
         </Menu>

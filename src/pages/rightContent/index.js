@@ -4,6 +4,8 @@ import { Switch, Route } from 'react-router-dom'
 import articleList from './subpages/articleList'
 import addArticle from './subpages/addArticle'
 import edit from './subpages/edit'
+import tagList from './subpages/tagList'
+import addTag from './subpages/addTag'
 import './rightContent.scss'
 
 let { Header, Footer } = Layout
@@ -29,6 +31,8 @@ class RightContent extends React.Component {
           <Route exact path="/" component={articleList} />
           <Route exact path="/addArticle" component={addArticle}/>
           <Route exact path="/edit/:postId" component={edit}></Route>
+          <Route exact path="/tagList" component={tagList}></Route>
+          <Route exact path="/addTag" component={addTag}></Route>
         </Switch>
         {/* 路由区 */}
         <Footer style={{ textAlign: 'center' }}>

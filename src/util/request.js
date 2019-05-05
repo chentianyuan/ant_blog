@@ -9,7 +9,10 @@ export const PATHS = {
     insertPost: '/post/insert'
   },
   tag: {
-    getAlltags: '/tag/list'
+    getAlltags: '/tag/list',
+    deleteTag: '/tag/delete',
+    renameTag: '/tag/rename',
+    insertTag: '/tag/insert'
   },
   comment: {
     insertLeaveMessage: '/comment/insertComment',
