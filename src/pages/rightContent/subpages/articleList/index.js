@@ -14,6 +14,7 @@ let confirm = Modal.confirm
 class articleList extends React.Component {
   state = {
     articleData: [],
+    articleCount: 0,
     columns: [{
       title: '标题',
       dataIndex: 'title',
@@ -55,7 +56,7 @@ class articleList extends React.Component {
       <Content style={{ margin: '0 24px 24px' }}>
         <Breadcrumb pathList={['Article', 'List']}></Breadcrumb>
         <div style={{padding: 24, backgroundColor: '#fff', minHeight: 360}}>
-          <Table columns={this.state.columns} dataSource={this.state.articleData} />
+          <Table columns={this.state.columns} dataSource={this.state.articleData} pagination={{pageSize: 8, total: this.state.articleCount}} onChange={this.updatePage.bind(this)}/>
         </div>
       </Content>
     )
@@ -63,14 +64,23 @@ class articleList extends React.Component {
   componentDidMount () {
     this.getArticles().then(res => {
       this.setState({
+        articleCount: res.count,
         articleData: res ? res.postList.map((item, key) => Object.assign(item, { key })) : []
       })
     })
   }
-  getArticles () {
+  updatePage (pagination) {
+    this.getArticles(pagination.current).then(res => {
+      this.setState({
+        articleCount: res.count,
+        articleData: res ? res.postList.map((item, key) => Object.assign(item, { key })) : []
+      })
+    })
+  }
+  getArticles (pageIndex = 1) {
     // 获取异步数据
     return request.post(PATHS.article.getArticleByPagination, {
-      pageIndex: 1,
+      pageIndex,
       pageSize: 8
     })
   }
