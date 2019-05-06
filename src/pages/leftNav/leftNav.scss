@@ -1,3 +1,12 @@
-.leftNav {
-  background-color: #fff;
+.left-nav {
+  .left-nav-avatar {
+    padding: 40px;
+    box-sizing: border-box;
+    img {
+      width: 80%;
+      margin: 0 auto;
+      box-shadow: -4px 4px 8px rgba(255, 255, 255, 0.8);
+      display: -webkit-box;
+    }
+  }
 }

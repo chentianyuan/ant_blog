@@ -44,6 +44,9 @@ class LeftNav extends React.Component {
         collapsed={this.props.collapsed}
         onCollapse={(collapsed, type) => this.props.onCollapsedHandler()}
       >
+      <div className="left-nav-avatar">
+        <img alt="avatar" src={require('../../static/avatar.png')}/>
+      </div>
         <Menu
           theme="dark"
           mode="inline"

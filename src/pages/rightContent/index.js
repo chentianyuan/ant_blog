@@ -6,6 +6,7 @@ import addArticle from './subpages/addArticle'
 import edit from './subpages/edit'
 import tagList from './subpages/tagList'
 import addTag from './subpages/addTag'
+import borad from './subpages/borad'
 import './rightContent.scss'
 
 let { Header, Footer } = Layout
@@ -33,6 +34,7 @@ class RightContent extends React.Component {
           <Route exact path="/edit/:postId" component={edit}></Route>
           <Route exact path="/tagList" component={tagList}></Route>
           <Route exact path="/addTag" component={addTag}></Route>
+          <Route exact path="/borad" component={borad}></Route>
         </Switch>
         {/* 路由区 */}
         <Footer style={{ textAlign: 'center' }}>
