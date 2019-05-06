@@ -1,2 +1,29 @@
-
-.App {}
+.bk {
+  width: 100%;
+  height: 100vh;
+  background-image: url('./static/sentry-pattern.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+.bk-cover {
+  height: 100vh;
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, .6);
+}
+.login-form {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  right: 0;
+  bottom: 0;
+  transform: translateX(-50%) translateY(-50%);
+  &-button {
+    width: 100%;
+  }
+  &-img {
+    width: 100%;
+  }
+}

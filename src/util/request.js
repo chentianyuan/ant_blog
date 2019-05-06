@@ -17,6 +17,9 @@ export const PATHS = {
   comment: {
     insertLeaveMessage: '/comment/insertComment',
     getLeaveMessageList: '/comment/getleaveComment'
+  },
+  user: {
+    verify: '/user/verify'
   }
 }
 
@@ -28,7 +31,8 @@ export const PATHS = {
 let fetchFn = function (path, params = {}, headerParams = { 
   // fetch请求传输json数据时，务必带上content-type: 'application/json'
   headers: new Headers({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': document.cookie.match(/_ytcblog_token_=(.*?);/) ? document.cookie.match(/_ytcblog_token_=(.*?);/)[1] : ''
   })
  }) {
   path = 'http://localhost:8089/api' + path
@@ -38,10 +42,9 @@ let fetchFn = function (path, params = {}, headerParams = {
   }, this.method === 'POST' ? {body: JSON.stringify(params)} : {})
   return fetch(path, params)
   .then(res => res.json())
-  .then(res => {
-    console.log(res, !res.hasError)
-    let data = res.data
-    if (data && !res.hasError) {
+  .then(data => {
+    console.log(data, !data.hasError)
+    if (data && !data.hasError) {
       return data
     } else {
       throw JSON.stringify(data.msg || '接口异常')

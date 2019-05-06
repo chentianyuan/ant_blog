@@ -1,7 +1,8 @@
 import * as ActionTypes from '../ActionType'
 
 const initialState = {
-  path: '/'
+  path: '/',
+  loginFlag: false
 }
 
 export const commonReducer = (state = initialState, action) => {
@@ -14,6 +15,12 @@ export const commonReducer = (state = initialState, action) => {
       return {
         ...state,
         path: action.payload
+      }
+    case ActionTypes.onlogin:
+      console.log('登录', action.payload)
+      return {
+        ...state,
+        loginFlag: action.payload
       }
     default:
       return state

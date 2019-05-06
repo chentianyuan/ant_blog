@@ -64,16 +64,16 @@ class articleList extends React.Component {
   componentDidMount () {
     this.getArticles().then(res => {
       this.setState({
-        articleCount: res.count,
-        articleData: res ? res.postList.map((item, key) => Object.assign(item, { key })) : []
+        articleCount: res.datacount,
+        articleData: res ? res.data.postList.map((item, key) => Object.assign(item, { key })) : []
       })
     })
   }
   updatePage (pagination) {
     this.getArticles(pagination.current).then(res => {
       this.setState({
-        articleCount: res.count,
-        articleData: res ? res.postList.map((item, key) => Object.assign(item, { key })) : []
+        articleCount: res.data.count,
+        articleData: res ? res.postList.data.map((item, key) => Object.assign(item, { key })) : []
       })
     })
   }
@@ -99,7 +99,7 @@ class articleList extends React.Component {
               message.success('删除成功')
               self.getArticles().then(res => {
                 self.setState({
-                  articleData: res.postList.map((item, key) => Object.assign(item, {key}))
+                  articleData: res.data.postList.map((item, key) => Object.assign(item, {key}))
                 })
                 resolve()
               })
