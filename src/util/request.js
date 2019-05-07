@@ -32,7 +32,7 @@ let fetchFn = function (path, params = {}, headerParams = {
   // fetch请求传输json数据时，务必带上content-type: 'application/json'
   headers: new Headers({
     'Content-Type': 'application/json',
-    'Authorization': document.cookie.match(/_ytcblog_token_=(.*?);/) ? document.cookie.match(/_ytcblog_token_=(.*?);/)[1] : ''
+    'Authorization': document.cookie.match(/_ytcblog_token_=(.*)(;?)/) ? document.cookie.match(/_ytcblog_token_=(.*)(;?)/)[1] : ''
   })
  }) {
   path = 'http://localhost:8089/api' + path

@@ -10,9 +10,8 @@ class Borad extends React.Component {
   }
   componentDidMount () {
     this.getCommentList().then(res => {
-      console.log(res)
       this.setState({
-        commentList: res
+        commentList: res.data
       })
     })
   }

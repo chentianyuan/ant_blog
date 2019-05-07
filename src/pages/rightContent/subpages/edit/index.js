@@ -12,9 +12,10 @@ class Edit extends React.Component {
     Promise.all([
       this.getTagList(),
       this.getPostById(postId)
-    ]).then(([tags, post]) => {
+    ]).then(([res1, res2]) => {
+      let post = res2.data
       this.setState({
-        tagList: tags,
+        tagList: res1.data,
         post,
         defaultValue: post.tags ? post.tags.map(tag => tag.id) : [],
         md: post.content

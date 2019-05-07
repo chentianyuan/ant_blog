@@ -18,6 +18,13 @@ class App extends React.Component {
     this.setState({collapsed: !this.state.collapsed})
   }
 
+  componentDidMount () {
+    let hasToken = document.cookie.match(/_ytcblog_token_=(.*)(;?)/)
+    if (hasToken) {
+      this.props.updateStateAction(true)
+    }
+  }
+
   render () {
     const isLogin = this.props.loginFlag
     let WrappedNormalLoginForm
@@ -56,4 +63,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateStateAction: payload => dispatch({ type: 'login', payload })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

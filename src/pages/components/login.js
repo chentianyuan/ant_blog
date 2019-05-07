@@ -10,10 +10,8 @@ class Login extends React.Component {
       if (!err) {
         let username = values['username']
         let password = values['password']
-        console.log(values)
         request.post(PATHS.user.verify,{ username, password })
         .then(data => {
-          console.log(data)
           if (data) {
             message.success('登录成功')
             /**
@@ -23,7 +21,10 @@ class Login extends React.Component {
              * expries：过期时间
              * secure：httponly设置
              */
-            document.cookie = `_ytcblog_token_=${data.data.token}; secure=true`
+            // expires应使用GMT格式的时间，不设置expires页面刷新后cookie失效
+            let expiresDate = new Date('December 31, 2020').toGMTString()
+            // max-age优先级高于expires
+            document.cookie = `_ytcblog_token_=${data.data.token};expires=${expiresDate};path=/;`
             this.props.updateStateAction(true)
           } else {
             message.error('登录失败')

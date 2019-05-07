@@ -36,10 +36,9 @@ class tagList extends React.Component {
     }]
   }
   componentDidMount () {
-    this.getTagList().then(data => {
-      console.log(data)
+    this.getTagList().then(res => {
       this.setState({
-        tagData: data.map((item, key) => Object.assign(item, {
+        tagData: res.data.map((item, key) => Object.assign(item, {
           key,
           editState: false
         }))
@@ -116,14 +115,14 @@ class tagList extends React.Component {
       onCancel () {},
       onOk () {
         return new Promise((resolve, reject) => {
-          request.post(PATHS.article.deleteTag, {
+          request.post(PATHS.tag.deleteTag, {
             tagId: tag.id
           }).then(res => {
             if (res && !res.hasError) {
               message.success('删除成功')
-              self.getTagList().then(data => {
+              self.getTagList().then(res => {
                 self.setState({
-                  tagData: data.map((item, key) => Object.assign(item, {key}))
+                  tagData: res.data.map((item, key) => Object.assign(item, {key}))
                 })
                 resolve()
               })

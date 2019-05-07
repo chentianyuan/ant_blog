@@ -38,7 +38,7 @@ class RightContent extends React.Component {
         </Switch>
         {/* 路由区 */}
         <Footer style={{ textAlign: 'center' }}>
-          backMangner ©2018 Created by React && Ant
+        backMangner © 2018 - Created by React && Ant
         </Footer>
       </Layout>
     )

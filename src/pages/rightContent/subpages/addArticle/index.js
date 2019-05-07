@@ -9,9 +9,9 @@ const { Content } = Layout
 const confirm = Modal.confirm
 class addArticle extends React.Component {
   componentDidMount () {
-    this.getTagList().then(tags => {
+    this.getTagList().then(res => {
       this.setState({
-        tagList: tags
+        tagList: res.data
       })
     })
   }
