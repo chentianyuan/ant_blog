@@ -34,6 +34,13 @@ class Login extends React.Component {
     })
   }
 
+  TouristMode = e => {
+    let expiresDate = new Date(new Date().getTime() + 60 * 60 * 1000).toGMTString()
+    // max-age优先级高于expires
+    document.cookie = `_ytcblog_token_=tourist;expires=${expiresDate};path=/;`
+    this.props.updateStateAction(true)
+  }
+
   componentDidMount () {
     // 若用户已登录，重定向至文章列表页
   }
@@ -68,6 +75,7 @@ class Login extends React.Component {
               <Checkbox>Remember me</Checkbox>
             )
           }
+          <a className="login-form-forgot" onClick={this.TouristMode.bind(this)} style={{float: 'right'}} href="javascript:">游客模式！</a> {/*eslint-disable-line*/}
           <Button type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>

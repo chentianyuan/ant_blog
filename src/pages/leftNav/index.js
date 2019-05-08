@@ -13,7 +13,7 @@ map.set('/', 'article-list')
 map.set('/addArticle', 'article-add')
 map.set('/tagList', 'tag-list')
 map.set('/addTag', 'tag-add')
-map.set('/board', 'board')
+map.set('/borad', 'borad')
 map.set('/edit', 'article-list')
 
 class LeftNav extends React.Component {
@@ -54,7 +54,7 @@ class LeftNav extends React.Component {
           defaultSelectedKeys={[map.get(key)]}
           selectedKeys={[map.get(key || '/')]}
         >
-          <SubMenu key="sub-article" title={<span><Icon type="user" />{!this.props.collapsed ? '文章管理' : ''}</span>}>
+          <SubMenu key="sub-article" title={<span><Icon type="ordered-list" />{!this.props.collapsed ? '文章管理' : ''}</span>}>
             <Menu.Item key="article-list">
               <Link to="/">
                 <span>文章列表</span>
@@ -66,7 +66,7 @@ class LeftNav extends React.Component {
               </Link>
             </Menu.Item>
           </SubMenu>
-          <SubMenu key="sub-tag" title={<span><Icon type="user" />{!this.props.collapsed ? '标签管理' : ''}</span>}>
+          <SubMenu key="sub-tag" title={<span><Icon type="tags" />{!this.props.collapsed ? '标签管理' : ''}</span>}>
             <Menu.Item key="tag-list">
               <Link to="/tagList">
                 <span>全部标签</span>
@@ -78,7 +78,7 @@ class LeftNav extends React.Component {
               </Link>
             </Menu.Item>
           </SubMenu>
-          <SubMenu key="sub-borad" title={<span><Icon type="user" />{!this.props.collapsed ? '留言墙管理' : ''}</span>}>
+          <SubMenu key="sub-borad" title={<span><Icon type="message" />{!this.props.collapsed ? '留言墙管理' : ''}</span>}>
             <Menu.Item key="borad">
               <Link to="/borad">
                 <span>留言墙</span>
