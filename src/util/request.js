@@ -35,7 +35,7 @@ let fetchFn = function (path, params = {}, headerParams = {
     'Authorization': document.cookie.match(/_ytcblog_token_=(.*)(;?)/) ? document.cookie.match(/_ytcblog_token_=(.*)(;?)/)[1] : ''
   })
  }) {
-  path = 'http://localhost:8089/api' + path
+  path = '/api' + path
   params = Object.assign(headerParams, {
     method: this.method,
     mode: 'cors'
