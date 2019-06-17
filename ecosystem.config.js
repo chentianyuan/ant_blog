@@ -20,7 +20,7 @@ module.exports = {
   deploy : {
     production : {
       user : 'root',
-      host : '47.97.110.222',
+      host : '129.28.191.26',
       ref  : 'origin/master',
       repo : 'https://github.com/chentianyuan/ant_blog.git',
       path : '/usr/project-manger',
