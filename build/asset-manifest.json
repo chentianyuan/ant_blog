@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c281a302.chunk.css",
+    "main.js": "/static/js/main.06e1e54b.chunk.js",
+    "main.js.map": "/static/js/main.06e1e54b.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.b92aed00.chunk.css": "/static/css/2.b92aed00.chunk.css",
+    "static/js/2.e4f5e4f6.chunk.js": "/static/js/2.e4f5e4f6.chunk.js",
+    "static/js/2.e4f5e4f6.chunk.js.map": "/static/js/2.e4f5e4f6.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.541a0dcfadcbd08e2af1ae4d9e2e0b30.js": "/precache-manifest.541a0dcfadcbd08e2af1ae4d9e2e0b30.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.b92aed00.chunk.css.map": "/static/css/2.b92aed00.chunk.css.map",
+    "static/css/main.c281a302.chunk.css.map": "/static/css/main.c281a302.chunk.css.map",
+    "static/media/avatar.png": "/static/media/avatar.a8ab34e3.png",
+    "static/media/App.scss": "/static/media/sentry-pattern.a141b87e.png"
+  }
+}
